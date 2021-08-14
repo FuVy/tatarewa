@@ -10,6 +10,8 @@ public class ClickableText : MonoBehaviour
     private TextSelector _selector;
     [SerializeField]
     private WordPopup _popup;
+    [SerializeField]
+    private Reader _reader;
 
     private string _text;
 
@@ -22,6 +24,8 @@ public class ClickableText : MonoBehaviour
 
     public void TryToOutputWord()
     {
+        _reader.Pause();
+
         int stringPosition = _readArea.stringPosition;
 
         if(stringPosition >= _text.Length)

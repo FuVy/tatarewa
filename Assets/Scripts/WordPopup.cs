@@ -36,11 +36,6 @@ public class WordPopup : MonoBehaviour
         _transform.position = newPosition;
         ClampToScreen();
     }
-    private string Translate(string word)
-    {
-        //
-        return "s";
-    }
 
     private void ClampToScreen()
     { 

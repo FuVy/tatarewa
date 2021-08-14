@@ -431,6 +431,7 @@ RectTransform:
   - {fileID: 1172841404}
   - {fileID: 1418652592}
   - {fileID: 267335311}
+  - {fileID: 1750524210}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -996,10 +997,15 @@ MonoBehaviour:
   m_SelectionColor: {r: 0.8396226, g: 0.74459505, b: 0.14653791, a: 0.7019608}
   m_Text: "\u0418 \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B, \u0438 \u043C\u0430\u0442\u0443\u0440
     \u0442\u0435\u043B, \u04D9\u0442\u043A\u04D9\u043C-\u04D9\u043D\u043A\u04D9\u043C\u043D\u0435\u04A3
-    \u0442\u0435\u043B\u0435!\n\u0414\u04E9\u043D\u044C\u044F\u0434\u0430 \u043A\u04AF\u043F
+    \u0442\u0435\u043B\u0435!..\n\u0414\u04E9\u043D\u044C\u044F\u0434\u0430 \u043A\u04AF\u043F
     \u043D\u04D9\u0440\u0441\u04D9 \u0431\u0435\u043B\u0434\u0435\u043C \u0441\u0438\u043D
-    \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B \u0430\u0440\u043A\u044B\u043B\u044B.\n\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430
-    \u0422\u0443\u043A\u0430\u0439."
+    \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B \u0430\u0440\u043A\u044B\u043B\u044B...\n\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430
+    \u0422\u0443\u043A\u0430\u0439.\n \u0418 \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B,
+    \u0438 \u043C\u0430\u0442\u0443\u0440 \u0442\u0435\u043B, \u04D9\u0442\u043A\u04D9\u043C-\u04D9\u043D\u043A\u04D9\u043C\u043D\u0435\u04A3
+    \u0442\u0435\u043B\u0435!..\n\u0414\u04E9\u043D\u044C\u044F\u0434\u0430 \u043A\u04AF\u043F
+    \u043D\u04D9\u0440\u0441\u04D9 \u0431\u0435\u043B\u0434\u0435\u043C \u0441\u0438\u043D
+    \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B \u0430\u0440\u043A\u044B\u043B\u044B...\n\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430
+    \u0422\u0443\u043A\u0430\u0439 "
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 1
@@ -1064,6 +1070,7 @@ MonoBehaviour:
   _readArea: {fileID: 1172841405}
   _selector: {fileID: 1172841410}
   _popup: {fileID: 1418652596}
+  _reader: {fileID: 267335314}
 --- !u!114 &1172841409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1216,10 +1223,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0418 \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B, \u0438 \u043C\u0430\u0442\u0443\u0440
     \u0442\u0435\u043B, \u04D9\u0442\u043A\u04D9\u043C-\u04D9\u043D\u043A\u04D9\u043C\u043D\u0435\u04A3
-    \u0442\u0435\u043B\u0435!\n\u0414\u04E9\u043D\u044C\u044F\u0434\u0430 \u043A\u04AF\u043F
+    \u0442\u0435\u043B\u0435!..\n\u0414\u04E9\u043D\u044C\u044F\u0434\u0430 \u043A\u04AF\u043F
     \u043D\u04D9\u0440\u0441\u04D9 \u0431\u0435\u043B\u0434\u0435\u043C \u0441\u0438\u043D
-    \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B \u0430\u0440\u043A\u044B\u043B\u044B.\n\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430
-    \u0422\u0443\u043A\u0430\u0439.\u200B"
+    \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B \u0430\u0440\u043A\u044B\u043B\u044B...\n\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430
+    \u0422\u0443\u043A\u0430\u0439.\n \u0418 \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B,
+    \u0438 \u043C\u0430\u0442\u0443\u0440 \u0442\u0435\u043B, \u04D9\u0442\u043A\u04D9\u043C-\u04D9\u043D\u043A\u04D9\u043C\u043D\u0435\u04A3
+    \u0442\u0435\u043B\u0435!..\n\u0414\u04E9\u043D\u044C\u044F\u0434\u0430 \u043A\u04AF\u043F
+    \u043D\u04D9\u0440\u0441\u04D9 \u0431\u0435\u043B\u0434\u0435\u043C \u0441\u0438\u043D
+    \u0442\u0443\u0433\u0430\u043D \u0442\u0435\u043B \u0430\u0440\u043A\u044B\u043B\u044B...\n\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430
+    \u0422\u0443\u043A\u0430\u0439 \u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b2cd162608bf3e469a6cfda24dfc86d, type: 2}
   m_sharedMaterial: {fileID: -2775648387948719408, guid: 0b2cd162608bf3e469a6cfda24dfc86d, type: 2}
@@ -1922,6 +1934,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 267335314}
+        m_TargetAssemblyTypeName: Reader, Assembly-CSharp
+        m_MethodName: Unpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1543928669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,6 +2207,96 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _translator: {fileID: 1418652599}
   _dictionary: {fileID: 11400000, guid: 332cdbaafd505d242911faa3ae75e851, type: 2}
+--- !u!1 &1750524209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750524210}
+  - component: {fileID: 1750524213}
+  - component: {fileID: 1750524212}
+  - component: {fileID: 1750524211}
+  m_Layer: 5
+  m_Name: Wifi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1750524210
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750524209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 281275782}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -200, y: 200}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1750524211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750524209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638fc062c2e704347822d8f55fb6ab7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkTime: 5
+  _image: {fileID: 1750524212}
+--- !u!114 &1750524212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750524209}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0.23511362, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9c1be991c7deb694a98a79f04b9c10b7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1750524213
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750524209}
+  m_CullTransparentMesh: 1
 --- !u!1 &1878076676
 GameObject:
   m_ObjectHideFlags: 0

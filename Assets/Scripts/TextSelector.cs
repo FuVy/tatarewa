@@ -16,7 +16,11 @@ public class TextSelector : MonoBehaviour
 
     public IEnumerator Select(int start, int end, int adjustValue)
     {
-        
+        if (end - start <= 1)
+        {
+            start = 0;
+            end = 0;
+        }
         _inputField.ActivateInputField();
         yield return new WaitForSeconds(0.1f);
         ChangeSelection(start, end, adjustValue);
