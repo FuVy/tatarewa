@@ -36,33 +36,31 @@ public class ClickableText : MonoBehaviour
 
     public void TryToOutputWord()
     {
-        int caretPosition = _readArea.stringPosition;
+        int stringPosition = _readArea.stringPosition;
 
-        if(caretPosition >= _text.Length)
+        if(stringPosition >= _text.Length)
         {
             return;
         }
 
-        int wordStartIndex = FindWordStart(caretPosition);
-        int wordEndIndex = FindWordEnd(caretPosition);
+        int wordStartIndex = FindWordStart(stringPosition);
+        int wordEndIndex = FindWordEnd(stringPosition);
 
         if (wordStartIndex == wordEndIndex)
         {
             return;
         }
 
-        print(wordStartIndex);
-        print(_readArea.caretPosition);
-        ChangeSelection(wordStartIndex, wordEndIndex, wordStartIndex + (wordEndIndex - wordStartIndex) - _readArea.caretPosition);
+        ChangeSelection(wordStartIndex, wordEndIndex, stringPosition - _readArea.caretPosition);
 
-        string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
+        //string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
 
         //print(word);
     }
 
     private void ChangeSelection(int start, int end, int adjustValue)
     {
-        _readArea.selectionAnchorPosition = start - adjustValue;
+        _readArea.selectionAnchorPosition = start - adjustValue + 1;
         _readArea.selectionFocusPosition = end - adjustValue;
     }
 }
