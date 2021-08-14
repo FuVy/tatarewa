@@ -11,7 +11,12 @@ public class Translator : MonoBehaviour
     private TMP_Text _originalText;
 
     private string _translatedWord;
+
+    public string TranslatedWord => _translatedWord;
+
     private string _originalWord;
+
+    public string OriginalWord => _originalWord;
 
     private TranslatorResponse _response;
 

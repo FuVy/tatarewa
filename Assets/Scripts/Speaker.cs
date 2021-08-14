@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class Speaker : MonoBehaviour
@@ -10,6 +11,10 @@ public class Speaker : MonoBehaviour
 
     private AudioSource _source;
     private AudioClip _clip;
+
+    [SerializeField]
+    private UnityEvent ClipRequestSuccessful;
+
     private void Awake()
     {
         _source = GetComponent<AudioSource>();
@@ -35,6 +40,8 @@ public class Speaker : MonoBehaviour
             {
                 _clip = DownloadHandlerAudioClip.GetContent(www);
                 _source.clip = _clip;
+                Play();
+                ClipRequestSuccessful.Invoke();
             }
         }
     }

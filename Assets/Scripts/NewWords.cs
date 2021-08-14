@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class NewWords
 {
-    [SerializeField]
-    private Dictionary<string, string> _dictionary;
-
-    public Dictionary<string, string> Dictionary => _dictionary;
+    public Dictionary<string, string> Dictionary = new Dictionary<string, string>();
 }

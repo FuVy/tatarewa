@@ -37,7 +37,7 @@ public class ClickableText : MonoBehaviour
             return;
         }
 
-        _selector.ChangeSelection(wordStartIndex, wordEndIndex, stringPosition - _readArea.caretPosition);
+        StartCoroutine(_selector.Select(wordStartIndex, wordEndIndex, stringPosition - _readArea.caretPosition));
 
         string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
 
