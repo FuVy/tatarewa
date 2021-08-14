@@ -6,32 +6,18 @@ public class ClickableText : MonoBehaviour
 {
     [SerializeField]
     private TMP_InputField _readArea;
+    [SerializeField]
+    private TextSelector _selector;
+    [SerializeField]
+    private WordPopup _popup;
 
     private string _text;
 
     private void Start()
     {
         _text = _readArea.text;
-    }
 
-    private int FindWordStart(int startPosition)
-    {
-        int i = startPosition;
-        while(char.IsLetter(_text[i]))
-        {
-            i--;
-        }
-        return i;
-    }
-
-    private int FindWordEnd(int startPosition)
-    {
-        int i = startPosition;
-        while(char.IsLetter(_text[i]))
-        {
-            i++;
-        }
-        return i;
+        _readArea.verticalScrollbar.value = 0; //временно, в будущем вынести в отдельный скрипт, который будет ставить значение согласно сохраненному
     }
 
     public void TryToOutputWord()
@@ -43,24 +29,20 @@ public class ClickableText : MonoBehaviour
             return;
         }
 
-        int wordStartIndex = FindWordStart(stringPosition);
-        int wordEndIndex = FindWordEnd(stringPosition);
+        int wordStartIndex = _text.WordStart(stringPosition);
+        int wordEndIndex = _text.WordEnd(stringPosition);
 
         if (wordStartIndex == wordEndIndex)
         {
             return;
         }
 
-        ChangeSelection(wordStartIndex, wordEndIndex, stringPosition - _readArea.caretPosition);
+        _selector.ChangeSelection(wordStartIndex, wordEndIndex, stringPosition - _readArea.caretPosition);
 
-        //string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
+        string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
 
-        //print(word);
-    }
-
-    private void ChangeSelection(int start, int end, int adjustValue)
-    {
-        _readArea.selectionAnchorPosition = start - adjustValue + 1;
-        _readArea.selectionFocusPosition = end - adjustValue;
+        _popup.gameObject.SetActive(true);
+        _popup.SetPosition(_readArea.caretPosition - (word.Length / 2));
+        _popup.Show(word);
     }
 }
