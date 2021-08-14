@@ -23,7 +23,7 @@ public class Speaker : MonoBehaviour
 
     IEnumerator GetClip(string textToSpeech)
     {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(ServerConfig.SERVER_URL + "?t=" + textToSpeech, AudioType.MPEG))
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(ServerConfig.SPEECH_SERVER_URL + "?t=" + textToSpeech, AudioType.MPEG))
         {
             yield return www.SendWebRequest();
 

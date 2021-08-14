@@ -8,9 +8,7 @@ public class WordPopup : MonoBehaviour
     [SerializeField]
     private Speaker _speaker;
     [SerializeField]
-    private TMP_Text _originalWord;
-    [SerializeField]
-    private TMP_Text _translatedWord;
+    private Translator _translator;
     [SerializeField]
     private TextMeshProUGUI _text;
 
@@ -27,8 +25,7 @@ public class WordPopup : MonoBehaviour
     public void Show(string originalWord)
     {
         _speaker.Load(originalWord);
-        _originalWord.text = originalWord;
-        _translatedWord.text = Translate(originalWord);
+        _translator.Translate(originalWord);
     }
 
     public void SetPosition(int index)
@@ -37,7 +34,6 @@ public class WordPopup : MonoBehaviour
         Vector2 newPosition = _text.transform.TransformPoint(position) + (Vector3)_popupOffset;
 
         _transform.position = newPosition;
-        Debug.Log(newPosition);
         ClampToScreen();
     }
     private string Translate(string word)
