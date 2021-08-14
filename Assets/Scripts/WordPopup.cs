@@ -6,6 +6,8 @@ public class WordPopup : MonoBehaviour
     [SerializeField]
     private Vector2 _popupOffset;
     [SerializeField]
+    private Speaker _speaker;
+    [SerializeField]
     private TMP_Text _originalWord;
     [SerializeField]
     private TMP_Text _translatedWord;
@@ -19,13 +21,14 @@ public class WordPopup : MonoBehaviour
     private void Awake()
     {
         _transform = GetComponent<RectTransform>();
+        gameObject.SetActive(false);
     }
 
     public void Show(string originalWord)
     {
+        _speaker.Load(originalWord);
         _originalWord.text = originalWord;
         _translatedWord.text = Translate(originalWord);
-        
     }
 
     public void SetPosition(int index)
