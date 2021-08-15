@@ -16,6 +16,7 @@ public class Reader : MonoBehaviour
 
     private int _currentIndex = 0;
     private Sentence[] _sentences;
+    private bool _paused = false;
     private void Start()
     {
         _sentences = _readArea.text.Sentences();
@@ -38,12 +39,14 @@ public class Reader : MonoBehaviour
     {
         _speaker.Pause();
         Time.timeScale = 0f;
+        _paused = true;
     }
 
     public void Unpause()
     {
         _speaker.Unpause();
         Time.timeScale = 1f;
+        _paused = false;
         UpdateSelection();
     }
 
@@ -59,5 +62,25 @@ public class Reader : MonoBehaviour
     public void UpdateCurrentIndex()
     {
         _currentIndex++;
+    }
+
+    public void Restart()
+    {
+        _currentIndex = 0;
+        _sentences = _readArea.text.Sentences();
+        CancelInvoke();
+        ReadSentence();
+    }
+
+    public void CheckPause()
+    {
+        if (_paused)
+        {
+            Unpause();
+        }
+        else
+        {
+            Pause();
+        }
     }
 }

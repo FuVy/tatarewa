@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-[System.Serializable]
-public class Book
+[System.Serializable, CreateAssetMenu(fileName = "NewBook", menuName = "Book")]
+public class Book : ScriptableObject
 {
     [SerializeField]
     private string _name;

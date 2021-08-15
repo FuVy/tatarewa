@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class Wifi : MonoBehaviour
+public class ConnectionChecker : MonoBehaviour
 { 
     [SerializeField]
     private float _checkTime = 5f;

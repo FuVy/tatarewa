@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewWords", menuName = "Dictionary")]
-public class DictionaryHolder : ScriptableObject
+public class NewWordsHolder : ScriptableObject
 {
     [SerializeField]
     private NewWords _words;
