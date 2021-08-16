@@ -7,13 +7,15 @@ using UnityEngine.Events;
 [RequireComponent(typeof(AudioSource))]
 public class Speaker : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent ClipRequestSuccessful;
+    [SerializeField]
+    private UnityEvent TextIsNull;
+
     public float ClipLength => _clip.length;
 
     private AudioSource _source;
     private AudioClip _clip;
-
-    [SerializeField]
-    private UnityEvent ClipRequestSuccessful;
 
     private void Awake()
     {
@@ -23,7 +25,14 @@ public class Speaker : MonoBehaviour
     public void Load(string textToSpeech)
     {
         Stop();
-        StartCoroutine(GetClip(textToSpeech));
+        if (textToSpeech != "")
+        {
+            StartCoroutine(GetClip(textToSpeech));
+        }
+        else
+        {
+            TextIsNull.Invoke();
+        }
     }
 
     IEnumerator GetClip(string textToSpeech)
@@ -38,6 +47,7 @@ public class Speaker : MonoBehaviour
             }
             else
             {
+                print(textToSpeech);
                 _clip = DownloadHandlerAudioClip.GetContent(www);
                 _source.clip = _clip;
                 Play();

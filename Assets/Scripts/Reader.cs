@@ -17,13 +17,8 @@ public class Reader : MonoBehaviour
     private int _currentIndex = 0;
     private Sentence[] _sentences;
     private bool _paused = false;
-    private void Start()
-    {
-        _sentences = _readArea.text.Sentences();
-        ReadSentence();
-    }
 
-    private void ReadSentence()
+    public void ReadSentence()
     {
         UpdateSelection();
         _speaker.Load(_sentences[_currentIndex].text);
@@ -32,7 +27,7 @@ public class Reader : MonoBehaviour
 
     private void UpdateSelection()
     {
-        StartCoroutine(_selector.Select(_sentences[_currentIndex].startIndex, _sentences[_currentIndex].endIndex, 0));
+        StartCoroutine(_selector.Select(_sentences[_currentIndex].startIndex, _sentences[_currentIndex].endIndex));
     }
 
     public void Pause()

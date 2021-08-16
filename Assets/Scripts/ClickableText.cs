@@ -30,23 +30,24 @@ public class ClickableText : MonoBehaviour
 
         if(stringPosition >= _text.Length)
         {
+            _reader.Unpause();
             return;
         }
 
-        int wordStartIndex = _text.WordStart(stringPosition);
+        int wordStartIndex = _text.WordStart(stringPosition) + 1;
         int wordEndIndex = _text.WordEnd(stringPosition);
-
-        if (wordStartIndex == wordEndIndex)
+        if (wordStartIndex >= wordEndIndex)
         {
+            _reader.Unpause();
             return;
         }
-
-        StartCoroutine(_selector.Select(wordStartIndex, wordEndIndex, stringPosition - _readArea.caretPosition));
 
         string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
 
         _popup.gameObject.SetActive(true);
-        _popup.SetPosition(_readArea.caretPosition - (word.Length / 2));
+        _popup.SetPosition(_readArea.caretPosition);
         _popup.Show(word);
+
+        StartCoroutine(_selector.Select(wordStartIndex, wordEndIndex));
     }
 }

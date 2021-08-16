@@ -7,14 +7,14 @@ public class TextSelector : MonoBehaviour
     [SerializeField]
     private TMP_InputField _inputField;
 
-    public void ChangeSelection(int start, int end, int adjustValue)
+    public void ChangeSelection(int start, int end)
     {
-        _inputField.selectionAnchorPosition = start - adjustValue;
-        _inputField.selectionFocusPosition = end - adjustValue;
+        _inputField.selectionStringAnchorPosition = start;
+        _inputField.selectionStringFocusPosition = end;
         _inputField.DeactivateInputField();
     }
 
-    public IEnumerator Select(int start, int end, int adjustValue)
+    public IEnumerator Select(int start, int end)
     {
         if (end - start <= 1)
         {
@@ -22,7 +22,9 @@ public class TextSelector : MonoBehaviour
             end = 0;
         }
         _inputField.ActivateInputField();
-        yield return new WaitForSeconds(0.1f);
-        ChangeSelection(start, end, adjustValue);
+        yield return new WaitForEndOfFrame();
+        print(start);
+        print(end);
+        ChangeSelection(start, end);
     }
 }

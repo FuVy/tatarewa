@@ -358,6 +358,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  TextIsNull:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 267335314}
+        m_TargetAssemblyTypeName: Reader, Assembly-CSharp
+        m_MethodName: UpdateCurrentIndex
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 267335314}
+        m_TargetAssemblyTypeName: Reader, Assembly-CSharp
+        m_MethodName: ReadSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &267335313
 AudioSource:
   m_ObjectHideFlags: 0
@@ -522,9 +549,9 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1428,6 +1455,7 @@ GameObject:
   - component: {fileID: 1172841404}
   - component: {fileID: 1172841408}
   - component: {fileID: 1172841410}
+  - component: {fileID: 1172841411}
   - component: {fileID: 1172841409}
   - component: {fileID: 1172841407}
   - component: {fileID: 1172841406}
@@ -1664,6 +1692,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputField: {fileID: 1172841405}
+--- !u!114 &1172841411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172841403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c401bb2388e1e0b4e8343e88af86b6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reader: {fileID: 267335314}
+  _textArea: {fileID: 1172841405}
 --- !u!1 &1217298898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClipRequestSuccessful:
+    m_PersistentCalls:
+      m_Calls: []
+  TextIsNull:
     m_PersistentCalls:
       m_Calls: []
 --- !u!82 &1418652598

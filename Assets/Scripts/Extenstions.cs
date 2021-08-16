@@ -24,7 +24,7 @@ public static class Extenstions
 
     public static Sentence[] Sentences(this string text)
     {
-        string pattern = @"[!?.]+(?=$|\s)";
+        string pattern = @"<.*?>|[!?.]+(?=$|\s)";
         Regex rg = new Regex(pattern);
         string[] sentencesSplit = rg.Split(text);
         Sentence[] sentences = new Sentence[sentencesSplit.Length];
