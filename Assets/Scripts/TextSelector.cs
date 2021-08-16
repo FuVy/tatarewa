@@ -23,8 +23,6 @@ public class TextSelector : MonoBehaviour
         }
         _inputField.ActivateInputField();
         yield return new WaitForEndOfFrame();
-        print(start);
-        print(end);
         ChangeSelection(start, end);
     }
 }

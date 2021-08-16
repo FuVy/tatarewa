@@ -9,10 +9,13 @@ public class TextLoader : MonoBehaviour
     private Reader _reader;
     [SerializeField]
     private TMP_InputField _textArea;
+    private string _bookName;
 
     private void Start()
     {
-        var textFile = Resources.Load("Text/text01") as TextAsset;
+        _bookName = PlayerPrefs.GetString("BookToRead");
+        print(_bookName);
+        var textFile = Resources.Load("Text/" + _bookName) as TextAsset;
         _textArea.text = textFile.text;
         _reader.Restart();
     }
