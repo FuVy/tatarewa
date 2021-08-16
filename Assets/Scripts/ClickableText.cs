@@ -13,12 +13,8 @@ public class ClickableText : MonoBehaviour
     [SerializeField]
     private Reader _reader;
 
-    private string _text;
-
     private void Start()
     {
-        _text = _readArea.text;
-
         _readArea.verticalScrollbar.value = 0; //временно, в будущем вынести в отдельный скрипт, который будет ставить значение согласно сохраненному
     }
 
@@ -28,21 +24,21 @@ public class ClickableText : MonoBehaviour
 
         int stringPosition = _readArea.stringPosition;
 
-        if(stringPosition >= _text.Length)
+        if(stringPosition >= _readArea.text.Length)
         {
             _reader.Unpause();
             return;
         }
 
-        int wordStartIndex = _text.WordStart(stringPosition) + 1;
-        int wordEndIndex = _text.WordEnd(stringPosition);
+        int wordStartIndex = _readArea.text.WordStart(stringPosition) + 1;
+        int wordEndIndex = _readArea.text.WordEnd(stringPosition);
         if (wordStartIndex >= wordEndIndex)
         {
             _reader.Unpause();
             return;
         }
 
-        string word = _text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
+        string word = _readArea.text.Substring(wordStartIndex, wordEndIndex - wordStartIndex);
 
         _popup.gameObject.SetActive(true);
         _popup.SetPosition(_readArea.caretPosition);

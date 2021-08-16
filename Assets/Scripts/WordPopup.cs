@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -7,6 +8,8 @@ public class WordPopup : MonoBehaviour
     private Vector2 _popupOffset;
     [SerializeField]
     private Speaker _speaker;
+    [SerializeField]
+    private Reader _reader;
     [SerializeField]
     private Translator _translator;
     [SerializeField]
@@ -45,5 +48,11 @@ public class WordPopup : MonoBehaviour
         position.x = Mathf.Clamp(position.x, -sizeDelta.x * transformPivot.x, sizeDelta.x * (1 - transformPivot.x));
         position.y = Mathf.Clamp(position.y, -sizeDelta.y * transformPivot.y, sizeDelta.y * (1 - transformPivot.y));
         _transform.anchoredPosition = position;
+    }
+
+    public void Hide()
+    {
+        _reader.Unpause();
+        gameObject.SetActive(false);
     }
 }

@@ -6,13 +6,10 @@ using TMPro;
 public class NewWordsLearn : MonoBehaviour
 {
     [SerializeField]
-    private NewWordsHolder _newWords;
-    [SerializeField]
     private TMP_Text _text;
     [SerializeField]
     private Speaker _speaker;
 
-    private Dictionary<string, string>.KeyCollection _keyCollection;
     private List<string> _keys = new List<string>();
     private int _currentIndex = 0;
     private void Start()
@@ -23,9 +20,15 @@ public class NewWordsLearn : MonoBehaviour
 
     private void Setup()
     {
-        _keyCollection = _newWords.Words.Dictionary.Keys;
+        NewWordsIO.Init("NewWords");
+        UpdateKeys();
+    }
 
-        foreach (string s in _keyCollection)
+    private void UpdateKeys()
+    {
+        Dictionary<string, string>.KeyCollection keyCollection = NewWordsIO.CurrentWords.Words.Keys;
+        _keys = new List<string>();
+        foreach (string s in keyCollection)
         {
             _keys.Add(s);
         }
@@ -52,5 +55,26 @@ public class NewWordsLearn : MonoBehaviour
             _speaker.Load(_keys[_currentIndex]);
             _text.text = _keys[_currentIndex];
         }
+        else
+        {
+            _text.text = "Словарь пуст";
+            _speaker.DeleteClip();
+        }
+    }
+
+    public void RemoveFromDictionary()
+    {
+        if (_currentIndex < _keys.Count && _currentIndex >= 0)
+        {
+            NewWordsIO.RemoveFromDictionary(_keys[_currentIndex]);
+            UpdateKeys();
+            ChangeCurrentWord(-1);
+            print(_keys.Count);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        NewWordsIO.SaveWords();
     }
 }

@@ -2285,6 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _popupOffset: {x: 0, y: 220}
   _speaker: {fileID: 1418652597}
+  _reader: {fileID: 267335314}
   _translator: {fileID: 1418652599}
   _text: {fileID: 1285683901}
   _canvas: {fileID: 281275782}
@@ -2695,7 +2696,7 @@ GameObject:
   - component: {fileID: 1543928668}
   - component: {fileID: 1543928667}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2784,21 +2785,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1418652591}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 267335314}
-        m_TargetAssemblyTypeName: Reader, Assembly-CSharp
-        m_MethodName: Unpause
+      - m_Target: {fileID: 1418652596}
+        m_TargetAssemblyTypeName: WordPopup, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3017,6 +3006,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1418652596}
+        m_TargetAssemblyTypeName: WordPopup, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1741515790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,7 +3069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _translator: {fileID: 1418652599}
-  _dictionary: {fileID: 11400000, guid: 332cdbaafd505d242911faa3ae75e851, type: 2}
 --- !u!1 &1750524209
 GameObject:
   m_ObjectHideFlags: 0

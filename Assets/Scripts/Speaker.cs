@@ -41,17 +41,17 @@ public class Speaker : MonoBehaviour
         {
             yield return www.SendWebRequest();
 
-            if (www.isNetworkError)
-            {
-                Debug.Log(www.error);
-            }
-            else
+            if (www.result == UnityWebRequest.Result.Success)
             {
                 print(textToSpeech);
                 _clip = DownloadHandlerAudioClip.GetContent(www);
                 _source.clip = _clip;
                 Play();
                 ClipRequestSuccessful.Invoke();
+            }
+            else if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
             }
         }
     }
@@ -75,5 +75,10 @@ public class Speaker : MonoBehaviour
     public void Stop()
     {
         _source.Stop();
+    }
+
+    public void DeleteClip()
+    {
+        _source.clip = null;
     }
 }
