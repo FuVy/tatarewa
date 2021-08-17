@@ -12,6 +12,8 @@ public class NewWordsLearn : MonoBehaviour
     private Speaker _speaker;
     [SerializeField]
     private Transform _toFlip;
+    [SerializeField]
+    private GameObject _soundImage;
 
     Dictionary<string, string>.KeyCollection _keyCollection;
     private List<string> _keys = new List<string>();
@@ -56,7 +58,7 @@ public class NewWordsLearn : MonoBehaviour
     {
         if (_keys.Count > 0)
         {
-            _speaker.Load(_keys[_currentIndex]);
+            Read(_keys[_currentIndex]);
             _text.text = _keys[_currentIndex];
         }
         else
@@ -66,15 +68,22 @@ public class NewWordsLearn : MonoBehaviour
         }
     }
 
-    public void GetTranslation()
+    private void Read(string text)
+    {
+        _speaker.Load(text);
+    }
+
+    public void ShowTranslation()
     {
         if (_keys.Count > 0)
         {
-            _toFlip.DORotate(new Vector3(0, 180, 0), 0.5f)
+            _toFlip.DORotate(new Vector3(0, 90, 0), 0.2f)
                 .OnComplete(() =>
                 {
                     _text.text = NewWordsIO.CurrentWords.Words[_keys[_currentIndex]];
-                    _toFlip.DORotate(Vector3.zero, 0.5f);
+                    _toFlip.DORotate(new Vector3(0, 270, 0), 0f, RotateMode.FastBeyond360);
+                    _toFlip.DORotate(new Vector3(0, 0, 0), 0.2f);
+                    //Read(_text.text);
                 });
         }
     }
