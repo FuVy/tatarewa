@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class NewWordsLearn : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class NewWordsLearn : MonoBehaviour
     private TMP_Text _text;
     [SerializeField]
     private Speaker _speaker;
+    [SerializeField]
+    private Transform _toFlip;
 
+    Dictionary<string, string>.KeyCollection _keyCollection;
     private List<string> _keys = new List<string>();
     private int _currentIndex = 0;
     private void Start()
@@ -26,9 +30,9 @@ public class NewWordsLearn : MonoBehaviour
 
     private void UpdateKeys()
     {
-        Dictionary<string, string>.KeyCollection keyCollection = NewWordsIO.CurrentWords.Words.Keys;
+        _keyCollection = NewWordsIO.CurrentWords.Words.Keys;
         _keys = new List<string>();
-        foreach (string s in keyCollection)
+        foreach (string s in _keyCollection)
         {
             _keys.Add(s);
         }
@@ -59,6 +63,19 @@ public class NewWordsLearn : MonoBehaviour
         {
             _text.text = "Словарь пуст";
             _speaker.DeleteClip();
+        }
+    }
+
+    public void GetTranslation()
+    {
+        if (_keys.Count > 0)
+        {
+            _toFlip.DORotate(new Vector3(0, 180, 0), 0.5f)
+                .OnComplete(() =>
+                {
+                    _text.text = NewWordsIO.CurrentWords.Words[_keys[_currentIndex]];
+                    _toFlip.DORotate(Vector3.zero, 0.5f);
+                });
         }
     }
 
