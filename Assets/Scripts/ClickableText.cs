@@ -23,6 +23,10 @@ public class ClickableText : MonoBehaviour
 
     public void TryToOutputWord()
     {
+        if (!_readArea.interactable)
+        {
+            return;
+        }
         //_reader.Pause();
         OnClick.Invoke();
 
