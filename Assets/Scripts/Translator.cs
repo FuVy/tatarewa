@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Events;
 
 public class Translator : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Translator : MonoBehaviour
     private TMP_Text _translatedText;
     [SerializeField]
     private TMP_Text _originalText;
+    [SerializeField]
+    private UnityEvent OnOutput;
 
     private string _translatedWord;
 
@@ -19,6 +22,7 @@ public class Translator : MonoBehaviour
     public string OriginalWord => _originalWord;
 
     private TranslatorResponse _response;
+
 
     public void Translate(string text)
     {
@@ -48,7 +52,7 @@ public class Translator : MonoBehaviour
                 _response = JsonUtility.FromJson<TranslatorResponse>(responseJson);
                 Clear();
                 _translatedWord = _response.responseData.translatedText;
-                Output();
+                OnOutput.Invoke();
             }
         }
     }
@@ -58,8 +62,12 @@ public class Translator : MonoBehaviour
         _response.responseData.translatedText = _response.responseData.translatedText.Replace("#", "");
     }
 
-    private void Output()
+    public void Output()
     {
         _translatedText.text = _translatedWord;
+        if (_translatedWord == _originalWord)
+        {
+            _translatedText.text = "Перевод отсутствует";
+        }
     }
 }

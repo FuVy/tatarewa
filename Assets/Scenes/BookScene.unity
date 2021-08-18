@@ -566,7 +566,7 @@ Canvas:
   m_GameObject: {fileID: 281275778}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555a3bbbe721dde4188c52da3c9f26c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popupOffset: {x: 0, y: 220}
+  _popupOffset: {x: 0, y: 1}
   _speaker: {fileID: 1418652597}
   _reader: {fileID: 267335314}
   _translator: {fileID: 1418652599}
@@ -2399,6 +2399,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _translatedText: {fileID: 887337495}
   _originalText: {fileID: 1878076678}
+  OnOutput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1418652599}
+        m_TargetAssemblyTypeName: TranslatorIO, Assembly-CSharp
+        m_MethodName: Output
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1502181969
 GameObject:
   m_ObjectHideFlags: 0
