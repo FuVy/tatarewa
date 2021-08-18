@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 public static class Extenstions
 {
@@ -36,5 +37,12 @@ public static class Extenstions
             currentIndex = sentences[i].endIndex = sentences[i].startIndex + sentences[i].text.Length;
         }
         return sentences;
+    }
+
+    public static Vector3 ScreenToWorld(this Camera camera, Vector2 position2D)
+    {
+        Vector3 position = position2D;
+        position.z = 0;
+        return camera.ScreenToWorldPoint(position);
     }
 }
