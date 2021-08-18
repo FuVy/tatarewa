@@ -22,9 +22,7 @@ public class TextLoader : MonoBehaviour
         _bookName = PlayerPrefs.GetString("BookToRead");
         print(_bookName);
         var textFile = Resources.Load("Text/" + _bookName) as TextAsset;
-        //_textArea.text = textFile.text;
         Load(textFile.text);
-        //_reader.Restart();
     }
 
     public void Load(string text)
