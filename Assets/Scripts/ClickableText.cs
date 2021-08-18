@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class ClickableText : MonoBehaviour
 {
@@ -11,30 +12,35 @@ public class ClickableText : MonoBehaviour
     [SerializeField]
     private WordPopup _popup;
     [SerializeField]
-    private Reader _reader;
+    private UnityEvent OnClick;
+    [SerializeField]
+    private UnityEvent OnCancel;
 
     private void Start()
     {
-        _readArea.verticalScrollbar.value = 0; //временно, в будущем вынести в отдельный скрипт, который будет ставить значение согласно сохраненному
+        //_readArea.verticalScrollbar.value = 0; //временно, в будущем вынести в отдельный скрипт, который будет ставить значение согласно сохраненному
     }
 
     public void TryToOutputWord()
     {
-        _reader.Pause();
+        //_reader.Pause();
+        OnClick.Invoke();
 
         int stringPosition = _readArea.stringPosition;
 
         if(stringPosition >= _readArea.text.Length)
         {
-            _reader.Unpause();
+            //_reader.Unpause();
+            OnCancel.Invoke();
             return;
         }
 
-        int wordStartIndex = _readArea.text.WordStart(stringPosition) + 1;
+        int wordStartIndex = _readArea.text.WordStart(stringPosition);
         int wordEndIndex = _readArea.text.WordEnd(stringPosition);
         if (wordStartIndex >= wordEndIndex)
         {
-            _reader.Unpause();
+            //_reader.Unpause();
+            OnCancel.Invoke();
             return;
         }
 

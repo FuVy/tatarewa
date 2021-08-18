@@ -5,7 +5,7 @@ public static class Extenstions
     public static int WordStart(this string text, int initialIndex)
     {
         int i = initialIndex;
-        while ((char.IsLetter(text[i]) || text[i] == '-') && i > 0)
+        while (i > 0 && (char.IsLetter(text[i-1]) || text[i-1] == '-'))
         {
             i--;
         }
@@ -15,12 +15,12 @@ public static class Extenstions
     public static int WordEnd(this string text, int initialIndex)
     {
         int i = initialIndex;
-        while ((char.IsLetter(text[i]) || text[i] == '-') && i < text.Length - 1)
+        while (i < text.Length && (char.IsLetter(text[i]) || text[i] == '-'))
         {
             i++;
         }
         return i;
-    }
+    }   
 
     public static Sentence[] Sentences(this string text)
     {

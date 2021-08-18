@@ -11,7 +11,7 @@ public class Translator : MonoBehaviour
     [SerializeField]
     private TMP_Text _originalText;
     [SerializeField]
-    private UnityEvent OnOutput;
+    private UnityEvent<string> OnOutput;
 
     private string _translatedWord;
 
@@ -52,7 +52,7 @@ public class Translator : MonoBehaviour
                 _response = JsonUtility.FromJson<TranslatorResponse>(responseJson);
                 Clear();
                 _translatedWord = _response.responseData.translatedText;
-                OnOutput.Invoke();
+                OnOutput.Invoke(_translatedWord);
             }
         }
     }

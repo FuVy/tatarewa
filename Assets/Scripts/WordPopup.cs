@@ -27,7 +27,7 @@ public class WordPopup : MonoBehaviour
 
     public void Show(string originalWord)
     {
-        _speaker.Load(originalWord);
+        _speaker?.Load(originalWord);
         _translator.Translate(originalWord);
     }
 
@@ -52,7 +52,7 @@ public class WordPopup : MonoBehaviour
 
     public void Hide()
     {
-        _reader.Unpause();
+        _reader?.Unpause();
         gameObject.SetActive(false);
     }
 }
