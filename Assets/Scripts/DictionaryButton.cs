@@ -14,8 +14,11 @@ public class DictionaryButton : MonoBehaviour
     public void AddToDictionary()
     {
         NewWordsIO.AddToDictionary(_translator.OriginalWord, _translator.TranslatedWord);
-        print(_translator.OriginalWord);
-        print(_translator.TranslatedWord);
+        NewWordsIO.SaveWords();
+    }
+    public void AddToDictionaryReversed()
+    {
+        NewWordsIO.AddToDictionary(_translator.TranslatedWord, _translator.OriginalWord);
         NewWordsIO.SaveWords();
     }
 }

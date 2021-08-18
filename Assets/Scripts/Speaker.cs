@@ -46,7 +46,7 @@ public class Speaker : MonoBehaviour
                 print(textToSpeech);
                 _clip = DownloadHandlerAudioClip.GetContent(www);
                 _source.clip = _clip;
-                Play();
+                //Play();
                 ClipRequestSuccessful.Invoke();
             }
             else if (www.isNetworkError)
