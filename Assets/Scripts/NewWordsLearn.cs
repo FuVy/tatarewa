@@ -17,11 +17,14 @@ public class NewWordsLearn : MonoBehaviour
 
     Dictionary<string, string>.KeyCollection _keyCollection;
     private List<string> _keys = new List<string>();
+    private string[] _currentPair = new string[2];
     private int _currentIndex = 0;
     private void Start()
     {
+        _currentIndex = 0;
         Setup();
-        Read();
+        ChangeCurrentWord(0);
+        //Read();
     }
 
     private void Setup()
@@ -42,6 +45,7 @@ public class NewWordsLearn : MonoBehaviour
 
     public void ChangeCurrentWord(int value)
     {
+        _speaker.Stop();
         _currentIndex += value;
         if (_currentIndex < 0)
         {
@@ -51,6 +55,7 @@ public class NewWordsLearn : MonoBehaviour
         {
             _currentIndex = 0;
         }
+        UpdatePair();
         Read();
     }
 
@@ -58,14 +63,30 @@ public class NewWordsLearn : MonoBehaviour
     {
         if (_keys.Count > 0)
         {
-            Read(_keys[_currentIndex]);
-            _text.text = _keys[_currentIndex];
+            Read(_currentPair[0]);
+            _text.text = _currentPair[0];
         }
         else
         {
             _text.text = "Словарь пуст";
             _speaker.DeleteClip();
         }
+    }
+
+    private void UpdatePair()
+    {
+        _currentPair[0] = _keys[_currentIndex];
+        print(_currentPair[0]);
+        print(_keys[_currentIndex]);
+        _currentPair[1] = NewWordsIO.CurrentWords.Words[_keys[_currentIndex]];
+        print(_currentPair[1]);
+    }
+
+    private void SwapPairValues()
+    {
+        string temp = _currentPair[0];
+        _currentPair[0] = _currentPair[1];
+        _currentPair[1] = temp;
     }
 
     private void Read(string text)
@@ -80,10 +101,10 @@ public class NewWordsLearn : MonoBehaviour
             _toFlip.DORotate(new Vector3(0, 90, 0), 0.2f)
                 .OnComplete(() =>
                 {
-                    _text.text = NewWordsIO.CurrentWords.Words[_keys[_currentIndex]];
+                    _text.text = _currentPair[1];
                     _toFlip.DORotate(new Vector3(0, 270, 0), 0f, RotateMode.FastBeyond360);
                     _toFlip.DORotate(new Vector3(0, 0, 0), 0.2f);
-                    //Read(_text.text);
+                    SwapPairValues();
                 });
         }
     }
@@ -99,7 +120,7 @@ public class NewWordsLearn : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         NewWordsIO.SaveWords();
     }

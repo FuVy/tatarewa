@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class ConnectionChecker : MonoBehaviour
 { 
     [SerializeField]
+    private float _checkTime = 5f;
+    [SerializeField]
     private Image _image;
 
     private IEnumerator CheckInternetConnection(Action<bool> action)

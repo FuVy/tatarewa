@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2143309474ea1ee4ea8baae70c7da22e, type: 3}
-  m_Name: Test
+  m_Name: su
   m_EditorClassIdentifier: 
-  _name: "\u0422\u0435\u0441\u0442"
-  _coverImage: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  _title: "\u0421\u0443 \u0430\u043D\u0430\u0441\u044B"
+  _coverImage: {fileID: 21300000, guid: 0bb322b7d64019448bc9b3866df2b175, type: 3}
+  _author: "\u0413\u0430\u0431\u0434\u0443\u043B\u043B\u0430 \u0422\u0443\u043A\u0430\u0439"
   _description: 

@@ -20,7 +20,7 @@ public class BookHolder : MonoBehaviour
 
     public void LoadBook()
     {
-        PlayerPrefs.SetString("BookToRead", _book.Name);
+        PlayerPrefs.SetString("BookToRead", _book.Title);
         SceneManager.LoadScene(1);
     }
 }

@@ -23,26 +23,23 @@ public class ClickableText : MonoBehaviour
 
     public void TryToOutputWord()
     {
-        if (!_readArea.interactable)
-        {
-            return;
-        }
-
+        //_reader.Pause();
         OnClick.Invoke();
 
         int stringPosition = _readArea.stringPosition;
 
         if(stringPosition >= _readArea.text.Length)
         {
+            //_reader.Unpause();
             OnCancel.Invoke();
             return;
         }
 
         int wordStartIndex = _readArea.text.WordStart(stringPosition);
         int wordEndIndex = _readArea.text.WordEnd(stringPosition);
-
         if (wordStartIndex >= wordEndIndex)
         {
+            //_reader.Unpause();
             OnCancel.Invoke();
             return;
         }
@@ -55,11 +52,4 @@ public class ClickableText : MonoBehaviour
 
         StartCoroutine(_selector.Select(wordStartIndex, wordEndIndex));
     }
-}
-
-public class ClickableTextField : ClickableText
-{
-    [SerializeField]
-    private TMP_Text _textField;
-
 }

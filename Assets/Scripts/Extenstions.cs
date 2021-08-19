@@ -1,6 +1,4 @@
 using System.Text.RegularExpressions;
-using UnityEngine;
-using TMPro;
 
 public static class Extenstions
 {
@@ -38,22 +36,5 @@ public static class Extenstions
             currentIndex = sentences[i].endIndex = sentences[i].startIndex + sentences[i].text.Length;
         }
         return sentences;
-    }
-
-    public static Vector3 ScreenToWorld(this Camera camera, Vector2 position2D)
-    {
-        Vector3 position = position2D;
-        position.z = 0;
-        return camera.ScreenToWorldPoint(position);
-    }
-
-    public static void Load(this TMP_InputField input, string text)
-    {
-        input.text = text;
-    }
-
-    public static void Load(this TMP_Text textField, string text)
-    {
-        textField.text = text;
     }
 }
