@@ -37,6 +37,7 @@ public class InputManager : MonoBehaviour
         OnEndTouch?.Invoke(_camera.ScreenToWorld(_playerControls.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
     }
 
+
     public Vector2 PrimaryPosition()
     {
         return _camera.ScreenToWorld(_playerControls.Touch.PrimaryPosition.ReadValue<Vector2>());

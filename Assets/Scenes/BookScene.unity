@@ -370,6 +370,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 267335314}
+        m_TargetAssemblyTypeName: Reader, Assembly-CSharp
+        m_MethodName: CheckPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TextIsNull:
     m_PersistentCalls:
       m_Calls:
@@ -1227,7 +1239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869599034}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7031be237f1f5b942ac5e222ef9cde05, type: 3}
   m_Name: 
@@ -1238,24 +1250,9 @@ MonoBehaviour:
   OnSwipeStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1172841405}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnSwipeEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1172841405}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
+      - m_Target: {fileID: 869599038}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1264,6 +1261,21 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  OnSwipeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869599038}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &869599037
 MonoBehaviour:
@@ -1284,12 +1296,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869599034}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 581bccef0ce546649bdccf9276ef57ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scrollbar: {fileID: 0}
+  _scrollMultiplier: 0.2
+  _inputField: {fileID: 1172841405}
+  _scrollbar: {fileID: 1325210419}
   _pointerPosition: {x: 0, y: 0}
 --- !u!1 &887337493
 GameObject:
@@ -1823,7 +1837,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172841403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4f1f5dd8634894facfb1a784a0f5e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dfa94337d39fda4ca90531587ee3ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _inputField: {fileID: 1172841405}
@@ -1836,15 +1850,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172841403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c401bb2388e1e0b4e8343e88af86b6ec, type: 3}
+  m_Script: {fileID: 11500000, guid: f58a9aaa518def44391b9846688f26f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textArea: {fileID: 1172841405}
+  _textArea: {fileID: 0}
+  _inputField: {fileID: 1172841405}
   OnStart:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1172841411}
-        m_TargetAssemblyTypeName: TextLoader, Assembly-CSharp
+        m_TargetAssemblyTypeName: Loader, Assembly-CSharp
         m_MethodName: LoadBook
         m_Mode: 1
         m_Arguments:
@@ -2085,7 +2100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1285683901
@@ -2623,7 +2638,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502181969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 206093851}
@@ -2681,7 +2696,31 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 267335314}
         m_TargetAssemblyTypeName: Reader, Assembly-CSharp
-        m_MethodName: CheckPause
+        m_MethodName: InversePause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 267335314}
+        m_TargetAssemblyTypeName: Reader, Assembly-CSharp
+        m_MethodName: UpdateSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1418652596}
+        m_TargetAssemblyTypeName: WordPopup, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3298,7 +3337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638fc062c2e704347822d8f55fb6ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkTime: 5
   _image: {fileID: 1750524212}
 --- !u!114 &1750524212
 MonoBehaviour:

@@ -25,7 +25,7 @@ public class Reader : MonoBehaviour
         
     }
 
-    private void UpdateSelection()
+    public void UpdateSelection()
     {
         StartCoroutine(_selector.Select(_sentences[_currentIndex].startIndex, _sentences[_currentIndex].endIndex));
     }
@@ -67,13 +67,23 @@ public class Reader : MonoBehaviour
         ReadSentence();
     }
 
-    public void CheckPause()
+    public void InversePause()
     {
         if (_paused)
         {
             Unpause();
+            _readArea.interactable = true;
         }
         else
+        {
+            Pause();
+            _readArea.interactable = false;
+        }
+    }
+
+    public void CheckPause()
+    {
+        if (_paused)
         {
             Pause();
         }

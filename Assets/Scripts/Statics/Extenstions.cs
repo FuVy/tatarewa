@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using UnityEngine;
+using TMPro;
 
 public static class Extenstions
 {
@@ -44,5 +45,15 @@ public static class Extenstions
         Vector3 position = position2D;
         position.z = 0;
         return camera.ScreenToWorldPoint(position);
+    }
+
+    public static void Load(this TMP_InputField input, string text)
+    {
+        input.text = text;
+    }
+
+    public static void Load(this TMP_Text textField, string text)
+    {
+        textField.text = text;
     }
 }
