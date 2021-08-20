@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class NewWordsLearn : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class NewWordsLearn : MonoBehaviour
     [SerializeField]
     private Speaker _speaker;
     [SerializeField]
-    private Transform _toFlip;
+    private Transform _toFlip, _rotateButton;
     [SerializeField]
     private GameObject _soundImage;
 
@@ -24,7 +25,6 @@ public class NewWordsLearn : MonoBehaviour
         _currentIndex = 0;
         Setup();
         ChangeCurrentWord(0);
-        //Read();
     }
 
     private void Setup()
@@ -76,10 +76,7 @@ public class NewWordsLearn : MonoBehaviour
     private void UpdatePair()
     {
         _currentPair[0] = _keys[_currentIndex];
-        print(_currentPair[0]);
-        print(_keys[_currentIndex]);
         _currentPair[1] = NewWordsIO.CurrentWords.Words[_keys[_currentIndex]];
-        print(_currentPair[1]);
     }
 
     private void SwapPairValues()
@@ -98,14 +95,15 @@ public class NewWordsLearn : MonoBehaviour
     {
         if (_keys.Count > 0)
         {
-            _toFlip.DORotate(new Vector3(0, 90, 0), 0.2f)
+            _toFlip.DORotate(new Vector3(0, 90, 0), 0.3f)
                 .OnComplete(() =>
                 {
                     _text.text = _currentPair[1];
                     _toFlip.DORotate(new Vector3(0, 270, 0), 0f, RotateMode.FastBeyond360);
-                    _toFlip.DORotate(new Vector3(0, 0, 0), 0.2f);
+                    _toFlip.DORotate(new Vector3(0, 0, 0), 0.3f);
                     SwapPairValues();
                 });
+            _rotateButton.DOBlendableRotateBy(new Vector3(0, 0, -80), 1f);
         }
     }
 
