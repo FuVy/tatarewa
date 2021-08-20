@@ -28,7 +28,6 @@ public class Translator : MonoBehaviour
     {
         StartCoroutine(GetTranslation(text));
         _originalWord = text;
-        _originalText.text = _originalWord;
     }
 
     IEnumerator GetTranslation(string text)
@@ -64,7 +63,14 @@ public class Translator : MonoBehaviour
 
     public void Output()
     {
-        _translatedText.text = _translatedWord;
+        if (_translatedText)
+        {
+            _translatedText.text = _translatedWord;
+        }
+        if (_originalText)
+        {
+            _originalText.text = _originalWord;
+        }
         if (_translatedWord == _originalWord)
         {
             _translatedText.text = "Перевод отсутствует";

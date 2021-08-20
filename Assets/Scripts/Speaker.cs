@@ -43,7 +43,6 @@ public class Speaker : MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                print(textToSpeech);
                 _clip = DownloadHandlerAudioClip.GetContent(www);
                 _source.clip = _clip;
                 //Play();

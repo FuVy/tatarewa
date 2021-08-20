@@ -15,22 +15,14 @@ public class ClickableText : MonoBehaviour
     private UnityEvent OnClick;
     [SerializeField]
     private UnityEvent OnCancel;
-
-    private void Start()
-    {
-        //_readArea.verticalScrollbar.value = 0; //временно, в будущем вынести в отдельный скрипт, который будет ставить значение согласно сохраненному
-    }
-
     public void TryToOutputWord()
     {
-        //_reader.Pause();
         OnClick.Invoke();
 
         int stringPosition = _readArea.stringPosition;
 
         if(stringPosition >= _readArea.text.Length)
         {
-            //_reader.Unpause();
             OnCancel.Invoke();
             return;
         }
@@ -39,7 +31,6 @@ public class ClickableText : MonoBehaviour
         int wordEndIndex = _readArea.text.WordEnd(stringPosition);
         if (wordStartIndex >= wordEndIndex)
         {
-            //_reader.Unpause();
             OnCancel.Invoke();
             return;
         }

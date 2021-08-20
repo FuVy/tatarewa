@@ -13,6 +13,8 @@ public class Reader : MonoBehaviour
     private TextSelector _selector;
     [SerializeField]
     private TMP_InputField _readArea;
+    [SerializeField]
+    private ImageChanger _pauseChecker;
 
     private int _currentIndex = 0;
     private Sentence[] _sentences;
@@ -35,6 +37,7 @@ public class Reader : MonoBehaviour
         _speaker.Pause();
         Time.timeScale = 0f;
         _paused = true;
+        _pauseChecker?.ChangePauseStatus(1);
     }
 
     public void Unpause()
@@ -43,6 +46,7 @@ public class Reader : MonoBehaviour
         Time.timeScale = 1f;
         _paused = false;
         UpdateSelection();
+        _pauseChecker?.ChangePauseStatus(0);
     }
 
     public void StartCountdown()
