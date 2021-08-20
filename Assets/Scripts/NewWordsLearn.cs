@@ -23,19 +23,12 @@ public class NewWordsLearn : MonoBehaviour
     private void Start()
     {
         _currentIndex = 0;
-        Setup();
         ChangeCurrentWord(0);
-    }
-
-    private void Setup()
-    {
-        NewWordsIO.Init("NewWords");
-        UpdateKeys();
     }
 
     private void UpdateKeys()
     {
-        _keyCollection = NewWordsIO.CurrentWords.Words.Keys;
+        _keyCollection = PlayerDataHandler.Data.WordsToLearn.Words.Keys;
         _keys = new List<string>();
         foreach (string s in _keyCollection)
         {
@@ -75,8 +68,11 @@ public class NewWordsLearn : MonoBehaviour
 
     private void UpdatePair()
     {
-        _currentPair[0] = _keys[_currentIndex];
-        _currentPair[1] = NewWordsIO.CurrentWords.Words[_keys[_currentIndex]];
+        if (HasItems())
+        {
+            _currentPair[0] = _keys[_currentIndex];
+            _currentPair[1] = PlayerDataHandler.Data.WordsToLearn.Words[_keys[_currentIndex]];
+        }
     }
 
     private void SwapPairValues()
@@ -111,15 +107,27 @@ public class NewWordsLearn : MonoBehaviour
     {
         if (_currentIndex < _keys.Count && _currentIndex >= 0)
         {
-            NewWordsIO.RemoveFromDictionary(_keys[_currentIndex]);
+            PlayerDataHandler.Data.WordsToLearn.RemoveFromDictionary(_keys[_currentIndex]);
             UpdateKeys();
             ChangeCurrentWord(-1);
             print(_keys.Count);
         }
     }
 
+    private bool HasItems()
+    {
+        if (_keys.Count > 0)
+        {
+            return true;
+        }
+        else return false;
+    }
+    private void OnEnable()
+    {
+        UpdateKeys();
+    }
     private void OnDisable()
     {
-        NewWordsIO.SaveWords();
+        PlayerDataHandler.Save();
     }
 }

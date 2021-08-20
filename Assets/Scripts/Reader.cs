@@ -20,11 +20,12 @@ public class Reader : MonoBehaviour
     private Sentence[] _sentences;
     private bool _paused = false;
 
+    public bool Paused => _paused;
+
     public void ReadSentence()
     {
         UpdateSelection();
         _speaker.Load(_sentences[_currentIndex].text);
-        
     }
 
     private void UpdateSelection()
@@ -49,12 +50,26 @@ public class Reader : MonoBehaviour
         _pauseChecker?.ChangePauseStatus(0);
     }
 
+    private void CheckPause()
+    {
+        print(_paused);
+        if (_paused)
+        {
+            Pause();
+        }
+        else
+        {
+            Unpause();
+        }
+    }
+
     public void StartCountdown()
     {
         if (_currentIndex < _sentences.Length - 1)
         {
+            CheckPause();
             Invoke("UpdateCurrentIndex", _speaker.ClipLength);
-            Invoke("ReadSentence", _speaker.ClipLength);
+            Invoke("ReadSentence", _speaker.ClipLength + 0.1f);
         }
     }
     
@@ -71,7 +86,7 @@ public class Reader : MonoBehaviour
         ReadSentence();
     }
 
-    public void CheckPause()
+    public void InversePause()
     {
         if (_paused)
         {

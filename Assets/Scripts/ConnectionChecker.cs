@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ConnectionChecker : MonoBehaviour
 { 
     [SerializeField]
-    private float _checkTime = 5f;
+    private float _checkTime = 2f;
     [SerializeField]
     private Image _image;
 
@@ -44,6 +44,6 @@ public class ConnectionChecker : MonoBehaviour
                 _image.enabled = false;
             }
         }));
-        Invoke("CheckConnection", 5f);
+        Invoke("CheckConnection", _checkTime);
     }
 }

@@ -2175,7 +2175,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 267335314}
         m_TargetAssemblyTypeName: Reader, Assembly-CSharp
-        m_MethodName: CheckPause
+        m_MethodName: InversePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -7,7 +7,6 @@ using UnityEngine;
 
 public static class NewWordsIO 
 {
-    [SerializeField]
     private static NewWords _currentWords;
 
     public static NewWords CurrentWords => _currentWords;
@@ -44,7 +43,6 @@ public static class NewWordsIO
     {
         File.Create(_path).Close();
         _currentWords = new NewWords();
-        _currentWords.Words = new Dictionary<string, string>();
     }
 
     public static void SaveWords()
@@ -61,25 +59,6 @@ public static class NewWordsIO
         else
         {
             CreateFile();
-        }
-    }
-
-    public static void AddToDictionary(string original, string translated)
-    {
-        original = original.ToLower();
-        if (!_currentWords.Words.ContainsKey(original))
-        {
-            _currentWords.Words.Add(original, translated);
-        }
-    }
-
-    
-
-    public static void RemoveFromDictionary(string original)
-    {
-        if (_currentWords.Words.ContainsKey(original))
-        {
-            _currentWords.Words.Remove(original);
         }
     }
 }

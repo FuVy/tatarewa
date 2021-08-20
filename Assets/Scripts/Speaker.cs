@@ -55,7 +55,6 @@ public class Speaker : MonoBehaviour
         }
     }
 
-
     public void Pause()
     {
         _source.Pause();
