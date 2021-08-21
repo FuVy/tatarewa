@@ -9,7 +9,21 @@ public class BookData
 
     public string Text => _text;
 
-    private Sentence _leftOff;
+    private int _leftOff;
 
-    public Sentence LeftOff;
+    public int LeftOff => _leftOff;
+    
+    public BookData(string title, string text)
+    {
+        _title = title;
+        _text = text;
+        _leftOff = 0;
+    }
+
+    public BookData(){ }
+
+    public void UpdateSentence(int index)
+    {
+        _leftOff = index;
+    }
 }

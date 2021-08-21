@@ -1,3 +1,4 @@
+[System.Serializable]
 public struct Sentence
 {
     public int startIndex;

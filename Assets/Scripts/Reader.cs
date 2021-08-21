@@ -16,11 +16,20 @@ public class Reader : MonoBehaviour
     [SerializeField]
     private ImageChanger _pauseChecker;
 
-    private int _currentIndex = 0;
+    private int _currentIndex;
     private Sentence[] _sentences;
     private bool _paused = false;
 
     public bool Paused => _paused;
+
+    private void Start()
+    {
+        _readArea.text = BookDataHandler.Data.Text;
+        _sentences = _readArea.text.Sentences();
+        _currentIndex = BookDataHandler.Data.LeftOff;
+        ReadSentence();
+        print(_currentIndex);
+    }
 
     public void ReadSentence()
     {
@@ -50,7 +59,7 @@ public class Reader : MonoBehaviour
         _pauseChecker?.ChangePauseStatus(0);
     }
 
-    private void CheckPause()
+    public void CheckPause()
     {
         print(_paused);
         if (_paused)
@@ -67,9 +76,10 @@ public class Reader : MonoBehaviour
     {
         if (_currentIndex < _sentences.Length - 1)
         {
+            _speaker.Play();
             CheckPause();
             Invoke("UpdateCurrentIndex", _speaker.ClipLength);
-            Invoke("ReadSentence", _speaker.ClipLength + 0.1f);
+            Invoke("ReadSentence", _speaker.ClipLength + 0.01f);
         }
     }
     
@@ -81,7 +91,6 @@ public class Reader : MonoBehaviour
     public void Restart()
     {
         _currentIndex = 0;
-        _sentences = _readArea.text.Sentences();
         CancelInvoke();
         ReadSentence();
     }
@@ -96,5 +105,12 @@ public class Reader : MonoBehaviour
         {
             Pause();
         }
+    }
+
+    private void OnDestroy()
+    {
+        print(_currentIndex);
+        BookDataHandler.Data.UpdateSentence(_currentIndex);
+        BookDataHandler.Save();
     }
 }

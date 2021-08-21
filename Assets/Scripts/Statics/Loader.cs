@@ -31,13 +31,20 @@ public static class Loader<T> where T : new()
 
     private static object CreateFile()
     {
+        MonoBehaviour.print(_path);
         File.Create(_path).Close();
         var data = new T();
         return data;
     }
 
+    public static void CreateEmpty(string path)
+    {
+        File.Create(path).Close();
+    }
+
     public static void Save(string path, T data)
     {
+        _path = path;
         if (Exists())
         {
             BinaryFormatter formatter = new BinaryFormatter();

@@ -12,17 +12,15 @@ public class TextLoader : MonoBehaviour
     private UnityEvent OnStart;
     private string _bookName;
 
-    private void Start()
+    private void Awake()
     {
-        OnStart.Invoke();
+        //OnStart.Invoke();
     }
 
     public void LoadBook()
     {
-        _bookName = PlayerPrefs.GetString("BookToRead");
-        print(_bookName);
-        var textFile = Resources.Load("Text/" + _bookName) as TextAsset;
-        Load(textFile.text);
+        //_bookName = PlayerPrefs.GetString("BookToRead");
+        Load(BookDataHandler.Data.Text);
     }
 
     public void Load(string text)
